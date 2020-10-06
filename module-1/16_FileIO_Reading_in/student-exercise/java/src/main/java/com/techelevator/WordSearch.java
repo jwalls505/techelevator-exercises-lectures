@@ -33,7 +33,7 @@ public class WordSearch {
 
 	}
 
-	@SuppressWarnings("resource")
+	
 	private static File getInputFileFromUser() {
 		Scanner userInput = new Scanner(System.in);
 		System.out.print("Please enter path to input file >>> ");
@@ -48,6 +48,7 @@ public class WordSearch {
 			System.out.println(path + " is not a file");
 			System.exit(1); // Ends the program
 		}
+		userInput.close();
 		return inputFile;
 
 	}
