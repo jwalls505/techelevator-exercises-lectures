@@ -17,12 +17,17 @@ public class DAOExample {
 		
 		CityDAO dao = new JDBCCityDAO(worldDataSource);
 		
+		createAndFindCity(dao);
+	
+		
+		
+	}
+	public static void createAndFindCity(CityDAO dao) {
 		City smallville = new City();
 		smallville.setCountryCode("USA");
 		smallville.setDistrict("KS");
 		smallville.setName("Smallville");
 		smallville.setPopulation(42080);
-		
 		dao.save(smallville);
 		
 		City theCity = dao.findCityById(smallville.getId());

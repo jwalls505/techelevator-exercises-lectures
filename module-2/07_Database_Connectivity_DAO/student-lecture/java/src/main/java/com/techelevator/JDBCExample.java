@@ -44,8 +44,8 @@ public class JDBCExample {
 		
 		/* The next query example takes a parameter (i.e. is dynamic) */
 		String firstName = "Nick";
-		String lastName = "Stallone";
-		//String lastName = "O'Malley";     // This is an exmample of non-malicious user input that will cause the query to break
+		//String lastName = "Stallone";
+		String lastName = "O''Malley";     // This is an exmample of non-malicious user input that will cause the query to break
 		String sqlMoviesByActor = "SELECT film.title "+
 								  "FROM film join film_actor on film.film_id = film_actor.film_id "+
 								  "JOIN actor on actor.actor_id = film_actor.actor_id "+
@@ -83,7 +83,7 @@ public class JDBCExample {
 			System.out.println(title);
 		}
 		
-		/* The statment objects can also be used to perform INSERT and UPDATE commands */
+		/* The statement objects can also be used to perform INSERT and UPDATE commands */
 		PreparedStatement insertActorStmt = conn.prepareStatement("INSERT INTO actor(first_name, last_name) "+
 																  "VALUES(?, ?)");
 		String actorFirstName = "MARC";
