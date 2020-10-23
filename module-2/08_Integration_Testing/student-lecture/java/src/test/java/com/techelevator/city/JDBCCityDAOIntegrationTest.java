@@ -112,6 +112,34 @@ public class JDBCCityDAOIntegrationTest {
 		City savedCity = results.get(0);
 		assertCitiesAreEqual(theCity, savedCity);
 	}
+	@Test
+	public void update_existing_city_and_read_it_back() {
+		//Arrange
+		City theCity = getCity("SQL Station","South Dakota", TEST_COUNTRY, 65535);
+		dao.save(theCity);
+		theCity.setName("SQL Station 2");
+		theCity.setDistrict("North Dakota");
+		theCity.setCountryCode("USA"); //USA hardcode not ideal since this relies on existing data
+		theCity.setPopulation(400);
+		//Act
+		dao.update(theCity);
+		City updatedCity = dao.findCityById(theCity.getId());
+		//Assert
+		assertNotNull(updatedCity);
+		assertCitiesAreEqual(theCity, updatedCity);
+		
+	}
+	public void delete_existing_city_and_confirm_deletion() {
+		//Arrange
+		City theCity = getCity("SQL Station","South Dakota", TEST_COUNTRY, 65535);
+		dao.save(theCity);
+		
+		//Act
+		dao.delete(theCity.getId());
+		//Assert
+		City deletedCity = dao.findCityById(theCity.getId());
+		Assert.assertNull(deletedCity);
+	}
 
 	private City getCity(String name, String district, String countryCode, int population) {
 		City theCity = new City();
