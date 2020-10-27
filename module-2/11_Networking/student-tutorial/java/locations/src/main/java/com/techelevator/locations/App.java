@@ -5,9 +5,39 @@ import java.util.Scanner;
 import org.springframework.web.client.RestTemplate;
 
 public class App {
+  private static final String API_URL = "http://localhost:3000/locations";
 
   public static void main(String[] args) {
-    run();
+	run();
+	Scanner s = new Scanner(System.in);
+	printGreeting();
+	int menuSelection = 0;
+	try {
+		menuSelection = Integer.parseInt(s.nextLine());
+		}catch (NumberFormatException exception) {
+			System.out.println("Error parsing the input for menu selection.");
+	}
+	System.out.println("");
+	if (menuSelection == 1) {
+		// list locations
+		RestTemplate restTemplate = new RestTemplate();
+		Location[] locations = restTemplate.getForObject(API_URL, Location[].class);
+		printLocations(locations);
+	} else if (menuSelection == 2) {
+		s.close();
+		System.exit(0);
+	} else {
+		System.out.println("Invalid Selection");
+	}
+	int id = 0;
+	try {
+	  id = Integer.parseInt(s.nextLine());
+	} catch (NumberFormatException exception) {
+	  System.out.println("Error parsing the input for location id.");
+	}
+	
+	
+   
   }
 
   private static void run() {

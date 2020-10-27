@@ -9,14 +9,18 @@ public class App {
     public static void main(String[] args) {
         run();
     }
-
+    
+    private static Hotel[] getAllHotels() {
+    	RestTemplate restTemplate = new RestTemplate();
+    	return restTemplate.getForObject("http://localhost:3000/hotels", Hotel[].class);
+    }
     private static void run() {
         Hotel[] hotels = null;
         Scanner scanner = new Scanner(System.in);
         int menuSelection = 999;
 
         printGreeting();
-
+        
         while(menuSelection != 0) {
             try {
                 menuSelection = Integer.parseInt(scanner.nextLine());
@@ -25,7 +29,7 @@ public class App {
             }
             System.out.println("");
             if (menuSelection == 1) {
-                System.out.println("Not implemented");
+                getAllHotels();
             } else if (menuSelection == 2) {
                 System.out.println("Not implemented");
             } else if (menuSelection == 3) {

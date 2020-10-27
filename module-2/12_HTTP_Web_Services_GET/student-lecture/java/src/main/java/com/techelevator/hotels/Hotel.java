@@ -7,6 +7,8 @@ public class Hotel {
     private int stars;
     private int roomsAvailable;
     private String coverImage;
+    private double costPerNight;
+    private Address address;
 
     public Hotel() {}
 
@@ -41,5 +43,11 @@ public class Hotel {
 
     public String getCoverImage() {
         return coverImage;
+    }
+    public double getCostPerNight() {
+    	return costPerNight;
+    }
+    public Address getAddress() {
+    	return address;
     }
 }
