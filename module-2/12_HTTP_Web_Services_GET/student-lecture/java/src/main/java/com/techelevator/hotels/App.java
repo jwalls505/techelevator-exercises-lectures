@@ -10,15 +10,14 @@ public class App {
         run();
     }
     
-    private static Hotel[] getAllHotels() {
-    	RestTemplate restTemplate = new RestTemplate();
-    	return restTemplate.getForObject("http://localhost:3000/hotels", Hotel[].class);
-    }
+ 
     private static void run() {
+    	ReviewDAO reviewDAO = new RestReviewDAO();
+    	HotelDAO hotelDao = new RestHotelDAO();
         Hotel[] hotels = null;
         Scanner scanner = new Scanner(System.in);
         int menuSelection = 999;
-
+        
         printGreeting();
         
         while(menuSelection != 0) {
@@ -29,13 +28,17 @@ public class App {
             }
             System.out.println("");
             if (menuSelection == 1) {
-                getAllHotels();
+            	Hotel[] allHotels = hotelDao.getAlHotels();
+                printHotels(allHotels);
             } else if (menuSelection == 2) {
-                System.out.println("Not implemented");
+                Review[] allReviews = reviewDAO.getAllReviews();
+                printReviews(allReviews);
             } else if (menuSelection == 3) {
-                System.out.println("Not implemented");
+            	Hotel hotelOne = hotelDao.getHotelById(1);
+            	printHotel(hotelOne);
             } else if (menuSelection == 4) {
-                System.out.println("Not implemented");
+               Review[] reviewOne = reviewDAO.getAllReviewsForHotel(1);
+               
             } else if (menuSelection == 5) {
                 System.out.println("Not implemented");
             } else if (menuSelection == 6) {

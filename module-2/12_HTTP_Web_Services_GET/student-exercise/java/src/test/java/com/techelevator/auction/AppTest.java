@@ -15,7 +15,7 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 public class AppTest {
-
+		
         App app;
         RestTemplate mockRestTemplate;
         InputStream systemInput;
@@ -81,7 +81,7 @@ public class AppTest {
                                 .thenReturn(auction);
                 app.restTemplate = mockRestTemplate;
 
-                assertEquals(auction, app.listDetailsForAuction());
+                assertEquals(app.listDetailsForAuction(), auction);
         }
 
         /*
@@ -100,7 +100,7 @@ public class AppTest {
                 Mockito.verify(mockRestTemplate, Mockito.never()).getForObject(ArgumentMatchers.anyString(),
                                 ArgumentMatchers.eq(Auction.class));
 
-                assertEquals(auction, null);
+                assertEquals(null, auction);
         }
 
         @Test
