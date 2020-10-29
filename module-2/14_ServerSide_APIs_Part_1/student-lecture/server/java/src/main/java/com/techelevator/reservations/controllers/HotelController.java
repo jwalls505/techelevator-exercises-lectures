@@ -9,7 +9,7 @@ import com.techelevator.reservations.models.Reservation;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
 public class HotelController {
 
     private HotelDAO hotelDAO;
@@ -40,5 +40,24 @@ public class HotelController {
     public Hotel get(@PathVariable int id) {
         return hotelDAO.get(id);
     }
-
+    @RequestMapping(path = "/reservations/", method = RequestMethod.GET)
+    public List<Reservation> listReservation() {
+    	return reservationDAO.findAll();
+    }
+    @RequestMapping(path = "/reservation/{id}", method = RequestMethod.GET)
+    public Reservation getReservationById(@PathVariable int id) {
+    	return reservationDAO.get(id);
+    }
+    @RequestMapping(path = "/hotels/{hotelId}/reservations",method = RequestMethod.GET)
+    public List<Reservation> getReserByHotel(@PathVariable int hotelId) {
+    	return reservationDAO.findByHotel(hotelId);
+    }
+    @RequestMapping(path = "/hotels/{hotelID}/reservation", method = RequestMethod.POST)
+    public Reservation addReservation(@PathVariable int hotelId, @RequestBody Reservation reservation) {
+    	return reservationDAO.create(reservation, hotelId);
+    }
+    @RequestMapping(path = "/hotels/filter", method = RequestMethod.GET)
+    public List<Hotel> filterHotelsByStateAndCity(@RequestParam String state, @RequestParam(required =false) String city) {
+    	return null;
+    }
 }
