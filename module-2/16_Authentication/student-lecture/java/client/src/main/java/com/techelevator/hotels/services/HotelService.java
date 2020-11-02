@@ -6,6 +6,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestClientResponseException;
 import org.springframework.web.client.RestTemplate;
 
@@ -34,9 +35,17 @@ public class HotelService {
     if (reservation == null) {
       throw new HotelServiceException(INVALID_RESERVATION_MSG);
     }
+    HttpEntity<Reservation> entity = makeReservationEntity(reservation);
+    try {
+    	ResponseEntity<Reservation> response = restTemplate.exchange(BASE_URL + "/hotels/{id}/reservations", HttpMethod.POST, entity, Reservation.class);
+    	reservation = response.getBody();
+    } catch (RestClientResponseException ex) {
+        throw new HotelServiceException(ex.getRawStatusCode() + " : " + ex.getResponseBodyAsString());
+
+    }
 
     // TODO: Fix Me
-    throw new HotelServiceException("NOT IMPLEMENTED");
+    return reservation;
   }
 
   /**
