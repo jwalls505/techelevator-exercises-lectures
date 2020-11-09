@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservations</title>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Home</a>
+  </nav>
+
+  <form method="POST" action="/api/reservation">
+    <div>
+      <label for="reservationName">Name:</label>
+      <input id="reservationName" type="text" name="reservationName">
+    </div>
+
+    <div>
+      <label for="numberOfGuests">Number of guests:</label>
+      <input id="numberOfGuests" type="number">
+    </div>
+
+    <div>
+      <label for="dateOfReservation">Date:</label>
+      <input id="dateOfReservation" type="date">
+    </div>
+
+    <div>
+      <label for="timeOfReservation">Time:</label>
+      <input id="timeOfReservation" type="time">
+    </div>
+
+    <div>
+      <label for="specialOccasion">Is Special Occasion?</label>
+      <input id="specialOccasion" type="checkbox">
+    </div>
+
+    <div>
+      <input type="submit">
+    </div>
+  </form>
+</body>
+
+</html>
