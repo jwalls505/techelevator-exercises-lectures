@@ -77,6 +77,10 @@ div > h2 {
 div:not(first-child) {
   border-right: 1px solid rgba(170,239,135,0.8);
   padding-left: 20px;
+  
+}
+#contact-us {
+  border-right: none;
 } 
 footer {
   margin-left: 15px;
