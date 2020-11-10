@@ -38,9 +38,14 @@ body {
     font-style: arial;
     font-size: 22px;
 }
+
 #pageInfo {
     font-size: 20px;
     font-style: comic-sans;
+}
+table {
+    display: inline-block;
+    
 }
 ul {
     list-style-type: none;
