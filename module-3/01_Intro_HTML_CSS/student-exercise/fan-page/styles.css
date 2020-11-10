@@ -1,0 +1,61 @@
+body {
+    background-color: #b57eca69;
+}
+#main {
+    background-color: #39e2e2e7;
+}
+#title {
+    text-align: center;
+    font-family: Apple Chancery, cursive;
+    font-size: 250%;
+    margin: auto;
+    
+  }
+  #img-div {
+    text-align: center;
+    
+  }
+  @keyframes border {
+    0%   {background-color: #C39BD3;}
+    25%  {background-color: coral;}
+    50%  {background-color: grey;}
+    100% {background-color: #C39BD3;}
+  }
+  #image {
+  width: 25%;
+  height: auto;
+  max-width: 625px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 15px 50px;
+  padding: 20px;
+  animation-name: border;
+  animation-duration: 7s;
+  animation-iteration-count: infinite;
+}
+#p3 {
+    font-style: arial;
+    font-size: 22px;
+}
+#pageInfo {
+    font-size: 20px;
+    font-style: comic-sans;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+li {
+    font-size: 23px;
+}
+#seriesTitle {
+    text-decoration: underline;
+}
+blockquote {
+    margin-left: auto;
+    font-style: italic;
+    font-size: 20px
+}
