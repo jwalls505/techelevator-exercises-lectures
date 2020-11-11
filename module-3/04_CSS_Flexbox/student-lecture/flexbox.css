@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#hero footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#all-items article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#all-items article:nth-child(even) div:first-child {
+    order: 2;
+}
+@media screen and (min-width: 768px){
+#featured section {
+    display: flex;
+    justify-content: center;
+  }
+  #featured section header {
+      text-align: left;
+  }
+
+  #featured section article:not(:last-child) {
+      border-right: 20px solid darkcyan;
+  }
+  #hero, #hero img {
+      width: 80vw;
+  }
+}
