@@ -92,18 +92,3 @@ section {
 #all-items section article:nth-child(even) div:last-child {
   text-align: right;
 }
-
-@media only screen and (min-width: 550px) {
-  #hero,
-  #hero img {
-    width: 80vw;
-  }
-  #hero footer {
-    margin-top: -23px;
-    height: 80px;
-  }
-  #featured>header,
-  #all-items>header {
-    text-align: left;
-  }
-}
