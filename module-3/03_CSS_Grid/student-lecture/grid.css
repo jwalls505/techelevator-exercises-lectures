@@ -1,0 +1,40 @@
+header {
+  grid-area: header;
+}
+
+nav#menu-nav {
+  grid-area: menu-nav;
+}
+
+nav#menu-nav li {
+  display: inline-block;
+}
+
+main {
+  grid-area: main;
+}
+
+aside {
+  grid-area: upcoming-events;
+}
+
+footer {
+  grid-area: footer;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "header" "menu-nav" "main" "upcoming-events" "footer";
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    grid-template-columns: 200px 1fr 200px;
+    grid-template-areas: "header header header" "menu-nav main upcoming-events" "footer footer footer";
+  }
+  .sidebar li {
+    display: inline;
+  }
+}

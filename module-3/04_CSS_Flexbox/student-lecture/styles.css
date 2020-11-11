@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  width: 80vw;
+  font-family: Tahoma, sans-serif;
+}
+
+#hero {
+  font-family: 'Shadows Into Light', cursive;
+  color: black;
+  width: 100vw;
+  font-size: 4vw;
+}
+
+#hero img {
+  width: 100vw;
+}
+
+#hero footer {
+  height: 60px;
+  padding: 0 15px;
+  margin-top: -10px;
+  background-color: salmon;
+}
+
+#hero>footer a,
+#hero>footer a:visited,
+#hero>footer a:active {
+  text-decoration: none;
+  color: black;
+}
+
+#hero>footer a:hover {
+  background-color: slategray;
+}
+
+#featured {
+  font-family: Tahoma, sans-serif;
+  color: slategray;
+  margin-top: 25px;
+}
+
+#featured>header,
+#all-items>header {
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+#featured section article div {
+  padding: 40px;
+  max-height: 10vw;
+  background-color: lightblue;
+  color: white;
+  font-size: 0.75vw;
+}
+
+#featured section article p {
+  padding: 20px;
+}
+
+#featured section article header,
+#all-items section article div header {
+  font-weight: bold;
+  margin: 15px;
+}
+
+#all-items {
+  margin-top: 25px;
+}
+
+#all-items section article {
+  color: whitesmoke;
+  background-color: darkseagreen;
+}
+
+#all-items section article div:first-child {
+  font-size: .5vw;
+  margin: 10px;
+  padding: 30px;
+  border-radius: 10vw;
+  width: 3vw;
+  height: 3vw;
+  background-color: rgba(0, 0, 1, 0.2);
+}
+
+#all-items section article:nth-child(even) div:last-child {
+  text-align: right;
+}
+
+@media only screen and (min-width: 550px) {
+  #hero,
+  #hero img {
+    width: 80vw;
+  }
+  #hero footer {
+    margin-top: -23px;
+    height: 80px;
+  }
+  #featured>header,
+  #all-items>header {
+    text-align: left;
+  }
+}
