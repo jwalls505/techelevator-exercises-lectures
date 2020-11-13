@@ -10,8 +10,18 @@
  */
 function variables() {
   // Declares a variable where the value cannot be changed
+  const DAY_OF_WEEK = "Sunday";
+  const PI = 3.14;
+  console.log(DAY_OF_WEEK);
+  console.log(PI);
   // Declares a variable those value can be changed
+  let myName = "Jesse";
+  myName = "Jess";
+  console.log(myName);
   // Declares a variable that will always be an array
+  const MY_ARRAY = [1, 2, 5];
+  console.log(MY_ARRAY);
+
 }
 
 /**
@@ -74,10 +84,16 @@ function objects() {
   };
 
   // Log the object
-
+  console.log(person);
   // Log the first and last name
+  console.log(person.firstName + ' ' + person.lastName);
+  console.log(`${person.firstName}, ${person.lastName}`)
 
   // Log each employee
+  for (let i = 0; i < person.employees.length; i++) {
+    const currentEmployee = person.employees[i];
+    console.log(currentEmployee);
+  }
 }
 
 /*
