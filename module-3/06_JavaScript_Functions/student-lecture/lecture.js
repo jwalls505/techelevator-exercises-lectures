@@ -27,6 +27,12 @@ function printToConsole(value) {
  * @param {number} firstParameter the first parameter to multiply
  * @param {number} secondParameter the second parameter to multiply
  */
+function multiplyTogether(firstParameter = 0, secondParameter = 0) {
+  if (typeof firstParameter === Number && typeof secondParameter === Number) {
+    return firstParameter * secondParameter;
+  }
+  return 0;
+}
 
 /**
  * This version makes sure that no parameters are ever missing. If
@@ -40,7 +46,7 @@ function printToConsole(value) {
  */
 
 
- 
+
 /**
  * Functions can return earlier before the end of the function. This could be useful
  * in circumstances where you may not need to perform additional instructions or have to
@@ -86,7 +92,14 @@ function scopeTest() {
     console.log("This won't print!");
   }
 }
-
+/**
+ * Create a sentence describing the person and their quirks
+ * @param {String} name is the person's name
+ * @param {number} age the person's age
+ * @param {String[]} listOfQuirks their list of quirks
+ * @param {String} separator separator to join on
+ * @returns A sentence concatenated the person's name/age and their quirks
+ */
 function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') {
   let description = `${name} is currently ${age} years old. Their quirks are: `;
   return description + listOfQuirks.join(separator);
@@ -100,7 +113,9 @@ function createSentenceFromUser(name, age, listOfQuirks = [], separator = ', ') 
  * @returns {number} sum of all the numbers
  */
 function sumAllNumbers(numbersToSum) {
-  return numbersToSum.reduce();
+  return numbersToSum.reduce(accumulator, currentValue => {
+    return accumulator + currentValue;
+  }, 0);
 }
 
 /**
@@ -111,4 +126,9 @@ function sumAllNumbers(numbersToSum) {
  * @returns {number[]} a new array with only those numbers that are
  *   multiples of 3
  */
-function allDivisibleByThree(numbersToFilter) {}
+function allDivisibleByThree(numbersToFilter) {
+  return numbersToFilter.filter(x => x % 3 == 0);
+}
+
+
+
