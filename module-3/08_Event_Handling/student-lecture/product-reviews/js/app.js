@@ -74,11 +74,16 @@ displayReviews();
  */
 function toggleDescriptionEdit(desc) {
   const textBox = desc.nextElementSibling;
-  textBox.value = description;
+  textBox.value = desc.innerText;
   textBox.classList.remove('d-none');
   desc.classList.add('d-none');
   textBox.focus();
 }
+const descContainer = document.querySelector('p.description');
+descContainer.addEventListener('mouseenter', (event) => {
+  toggleDescriptionEdit(event.currentTarget);
+})
+
 
 /**
  * Take an event on the text box and set the description to the contents
@@ -91,10 +96,23 @@ function exitDescriptionEdit(textBox, save) {
   let desc = textBox.previousElementSibling;
   if (save) {
     desc.innerText = textBox.value;
+    if (desc.innerText === '') {
+      desc.innerHTML = '&nbsp;';
+    }
   }
   textBox.classList.add('d-none');
   desc.classList.remove('d-none');
 }
+const inputDesc = document.getElementById('inputDesc');
+inputDesc.addEventListener('mouseleave', () => {
+  exitDescriptionEdit(inputDesc, false);
+});
+
+inputDesc.addEventListener('keyup', (event) => {
+  if (event.key === 'Enter') {
+    exitDescriptionEdit(inputDesc, true);
+  }
+})
 
 /**
  * I will show / hide the add review form
@@ -114,6 +132,11 @@ function showHideForm() {
   }
 }
 
+const btn = document.getElementById('btToggleForm');
+btn.addEventListener('click', () => {
+  showHideForm();
+})
+
 /**
  * I will reset all of the values in the form.
  */
@@ -126,8 +149,27 @@ function resetFormValues() {
   document.getElementById('rating').value = 1;
   document.getElementById('review').value = '';
 }
+const saveBtn = document.getElementById('btnSaveReview');
+saveBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  saveReview();
+})
 
 /**
  * I will save the review that was added using the add review from
  */
-function saveReview() {}
+function saveReview() {
+  const inputName = document.getElementById('name');
+  const inputTitle = document.getElementById('title');
+  const selectRating = document.getElementById('rating');
+  const inputReview = document.getAnimations('review');
+  const newReview = {
+    reviewer: inputName.value,
+    title: inputTitle.value,
+    rating: selectRating.value,
+    review: inputReview.value
+  };
+  reviews.push(newReview);
+
+  displayReview(newReview);
+}
