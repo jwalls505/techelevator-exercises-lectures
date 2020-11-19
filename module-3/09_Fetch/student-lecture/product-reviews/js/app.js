@@ -1,6 +1,7 @@
 const name = 'Cigar Parties for Dummies';
 let description = 'Host and plan the perfect cigar party for all of your squirrelly friends.';
 let reviews = [];
+const baseURL = 'http://localhost:8080';
 
 /**
  * Add our product name to the page title
@@ -60,7 +61,7 @@ function displayReview(review) {
   const reviewContainers = document.querySelectorAll('.review');
   const lastReviewContainer = reviewContainers[reviewContainers.length - 1];
   lastReviewContainer.querySelector('.deleteReview').addEventListener('click', () => {
-    deleteReviewById(lastReviewContainer, review.reviewId);
+    deleteReviewById(lastReviewContainer, review.id);
   });
 }
 
@@ -145,24 +146,45 @@ function saveReview() {
   const inputReview = document.getElementById('review');
 
   const newReview = {
-    reviewId: reviews[reviews.length].reviewId + 1,
     reviewer: inputName.value,
     title: inputTitle.value,
-    rating: selectRating.value,
+    stars: selectRating.value,
     review: inputReview.value
   };
 
-  reviews.push(newReview);
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: newReview
+  };
+  showHideForm();
+  fetch(`${baseURL}/reviews`, requestOptions)
+    .then((response) => {
+      return response.json();
+    }).then((data) => {
+      reviews.push(data); //adding to array
+      displayReview(data); //display
+    })
+    .catch((error) => {
 
-  displayReview(newReview);
+    });
 }
 
 /**
  * Delete a review
  */
 function deleteReviewById(reviewElement, id) {
-  reviews = reviews.filter(r => r.reviewId != id);
-  reviewElement.remove();
+  const requestOption = {
+    method: 'DELETE'
+  };
+  fetch(`${baseURL}/reviews/${id}`, requestOption)
+    .then(() => {
+      reviews = reviews.filter(r => r.reviewId != id);
+      reviewElement.remove();
+    })
+
 }
 
 /**
@@ -201,6 +223,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setPageTitle();
   // set the product reviews page description
   setPageDescription();
-  // display all of the product reviews on our page
-  displayReviews();
+
+  fetch(`${baseURL}/reviews`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      // populate empty const review = [];
+      reviews = data;
+      // display all of the product reviews on our page
+      displayReviews();
+    });
 });
