@@ -1,5 +1,7 @@
 let allItemsIncomplete = true;
 const pageTitle = 'My Shopping List';
+let btnIncomp = 'Mark all Incompleted';
+let btnComp = 'Mark all Completed';
 const groceries = [
   { id: 1, name: 'Oatmeal', completed: false },
   { id: 2, name: 'Milk', completed: false },
@@ -37,5 +39,41 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  const completed = document.querySelectorAll('li');
+  completed.forEach((i) => {
+    i.addEventListener('click', () => {
+      if (!i.classList.contains('completed')) {
+        i.classList.add('completed');
+        i.querySelector('i').classList.add('completed');
+      }
+    });
+    i.addEventListener('dblclick', () => {
+      if (i.classList.contains('completed')) {
+        i.classList.remove('completed');
+        i.querySelector('i').classList.remove('completed');
+      }
+    });
+  });
+  const btnAll = document.getElementById('toggleAll');
+  btnAll.addEventListener('click', () => {
+    completed.forEach((i) => {
+      if (allItemsIncomplete === true) {
+        i.classList.add('completed');
+        i.querySelector('i').classList.add('completed');
+        btnAll.innerText = btnIncomp;
+
+      } else if (allItemsIncomplete === false) {
+        i.classList.remove('completed');
+        i.querySelector('i').classList.remove('completed');
+        btnAll.innerText = btnComp;
+      }
+    });
+    allItemsIncomplete = !allItemsIncomplete;
+  });
+});
+
