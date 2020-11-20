@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const deci = document.querySelector('.decimal');
   deci.addEventListener('click', e => {
     clickNumber(e);
-    deci.appendChild(numbers);
+    // deci.appendChild(numbers);
   });
   // get a reference to the all clear button
   // add a click event listener to call the function clear
