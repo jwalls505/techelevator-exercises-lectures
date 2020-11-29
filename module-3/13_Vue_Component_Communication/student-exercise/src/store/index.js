@@ -37,7 +37,7 @@ export default new Vuex.Store({
       book.read = !book.read;
     },
     ADD_BOOK(state, book) {
-      state.books.splice(book, 0);
+      state.books.push(book);
     }
   },
   actions: {},
