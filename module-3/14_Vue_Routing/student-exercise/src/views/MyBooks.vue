@@ -1,5 +1,10 @@
 <template>
-  <reading-list />
+  <div>
+    <reading-list />
+    <router-link v-bind:to="{ name: 'addBook' }"
+      >Add Book to Reading List</router-link
+    >
+  </div>
 </template>
 
 <script>
