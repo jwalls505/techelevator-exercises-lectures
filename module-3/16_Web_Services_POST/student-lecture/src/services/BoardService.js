@@ -5,6 +5,12 @@ const http = axios.create({
 });
 
 export default {
+  deleteBoard(boardID) {
+    return http.delete(`/boards/${boardID}`);
+  },
+  addBoard(board) {
+    return http.post('/boards/', board);
+  },
 
   getBoards() {
     return http.get('/boards');
