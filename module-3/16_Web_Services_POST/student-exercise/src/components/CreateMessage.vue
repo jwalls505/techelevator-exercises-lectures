@@ -26,15 +26,19 @@ export default {
         id: Math.floor(Math.random() * (1000 - 100) + 100),
         topicId: this.topicId,
         title: "",
-        messageText: ""
-      }
+        messageText: "",
+      },
     };
   },
   methods: {
     saveMessage() {
-
-    }
-  }
+      messageService.create(this.message).then((response) => {
+        if (response.status == 201) {
+          this.$router.push(`/${this.message.topicId}`);
+        }
+      });
+    },
+  },
 };
 </script>
 
